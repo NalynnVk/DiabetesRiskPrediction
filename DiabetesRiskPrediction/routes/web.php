@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DiabetesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,18 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/diabetes', [DiabetesController::class, 'index']);
 Route::get('/', 'App\Http\Controllers\DiabetesController@index');
+
+// Existing route for displaying data
+Route::get('/data', [DiabetesController::class, 'index']);
+
+// Route for handling form submission with filters
+Route::get('/filter-data', [DiabetesController::class, 'filterData'])->name('filter.data');
+
+
+// Route::controller(App\Http\Controllers\DiabetesController::class)->group(function() {
+//     Route::get('/', 'index');
+//     Route::get('/{indexID}', 'show');
+// });
 
 // Route::get('/diabetes/age/{age}', [DiabetesController::class, 'filterByAge']);
 

@@ -7,7 +7,7 @@ use App\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DiabetesData>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Diabetes>
  */
 class DiabetesFactory extends Factory
 {

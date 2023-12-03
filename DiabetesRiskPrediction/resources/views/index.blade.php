@@ -60,6 +60,42 @@
 
     <h1>DIABETES RISK PREDICTION DATA</h1>
 
+    {{-- Filter by gender --}}
+    <form method="GET" action="{{ url('/data') }}">
+        <div class="mb-3">
+            <label for="gender" class="form-label">Filter by Gender:</label>
+            <select class="form-select" name="gender" id="gender">
+                <option value="all" {{ $selectedGender == 'all' ? 'selected' : '' }}>All</option>
+                @foreach ($genders as $gender)
+                    <option value="{{ $gender->label }}" {{ $gender->label == $selectedGender ? 'selected' : '' }}>
+                        {{ $gender->label }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+    </form>
+
+    <br>
+
+    {{-- Filter by class --}}
+    <form method="GET" action="{{ url('/data') }}">
+        <div class="mb-3">
+            <label for="class" class="form-label">Filter by Class:</label>
+            <select class="form-select" name="class" id="class">
+                <option value="all" {{ $selectedClass == 'all' ? 'selected' : '' }}>All</option>
+                @foreach ($classes as $class)
+                    <option value="{{ $class->label }}" {{ $class->label == $selectedClass ? 'selected' : '' }}>
+                        {{ $class->label }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+    </form>
+
+    <br>
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-light">
@@ -85,7 +121,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($diabetesData as $data)
+                @foreach ($diabetes as $data)
                     <tr>
                         <th scope="row">{{ $data->id }}</th>
                         <td>{{ $data->age }}</td>
