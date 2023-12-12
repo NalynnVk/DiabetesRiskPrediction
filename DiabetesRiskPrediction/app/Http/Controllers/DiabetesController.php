@@ -23,13 +23,13 @@ class DiabetesController extends Controller
         // Use a single query for both gender and class filtering
         $query = Diabetes::query();
 
-        if($selectedGender != 'all'){
+        if ($selectedGender != 'all') {
             $query->whereHas('gender', function ($query) use ($selectedGender) {
                 $query->where('label', $selectedGender);
             });
         }
 
-        if($selectedClass != 'all'){
+        if ($selectedClass != 'all') {
             $query->whereHas('result', function ($query) use ($selectedClass) {
                 $query->where('label', $selectedClass);
             });

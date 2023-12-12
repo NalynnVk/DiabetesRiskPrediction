@@ -60,7 +60,7 @@
 
     <h1>DIABETES RISK PREDICTION DATA</h1>
 
-    {{-- Filter by gender --}}
+    <!-- Combine both filters into a single form -->
     <form method="GET" action="{{ url('/data') }}">
         <div class="mb-3">
             <label for="gender" class="form-label">Filter by Gender:</label>
@@ -73,13 +73,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Apply Filters</button>
-    </form>
 
-    <br>
-
-    {{-- Filter by class --}}
-    <form method="GET" action="{{ url('/data') }}">
         <div class="mb-3">
             <label for="class" class="form-label">Filter by Class:</label>
             <select class="form-select" name="class" id="class">
@@ -91,8 +85,10 @@
                 @endforeach
             </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Apply Filters</button>
     </form>
+
 
     <br>
 
@@ -103,6 +99,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Age</th>
                     <th scope="col">Gender</th>
+                    <th scope="col">Class</th>
                     <th scope="col">Polyuria</th>
                     <th scope="col">Polydipsia</th>
                     <th scope="col">Sudden Weight Loss</th>
@@ -117,7 +114,6 @@
                     <th scope="col">Muscle Stiffness</th>
                     <th scope="col">Alopecia</th>
                     <th scope="col">Obesity</th>
-                    <th scope="col">Class</th>
                 </tr>
             </thead>
             <tbody>
@@ -126,6 +122,7 @@
                         <th scope="row">{{ $data->id }}</th>
                         <td>{{ $data->age }}</td>
                         <td>{{ $data->gender->label }}</td>
+                        <td>{{ $data->result->label }}</td>
                         <td>{{ $data->polyuria ? 'Yes' : 'No' }}</td>
                         <td>{{ $data->polydipsia ? 'Yes' : 'No' }}</td>
                         <td>{{ $data->sudden_weight_loss ? 'Yes' : 'No' }}</td>
@@ -140,7 +137,6 @@
                         <td>{{ $data->muscle_stiffness ? 'Yes' : 'No' }}</td>
                         <td>{{ $data->alopecia ? 'Yes' : 'No' }}</td>
                         <td>{{ $data->obesity ? 'Yes' : 'No' }}</td>
-                        <td>{{ $data->result->label }}</td>
                     </tr>
                 @endforeach
             </tbody>
